@@ -1,7 +1,7 @@
-module Plugins.MementoMori (MementoMori(..)) where
+module Xmobar.Plugins.MementoMori (MementoMori(..)) where
 
-import Xmobar
-import MementoMori
+import Xmobar.Run.Exec(Exec(..))
+import MementoMori(yearsAlive)
 import Data.Time
 import Text.Printf
 

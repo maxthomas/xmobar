@@ -21,6 +21,7 @@ module Xmobar.Run.Types(runnableTypes) where
 import {-# SOURCE #-} Xmobar.Run.Runnable()
 import Xmobar.Plugins.Monitors
 import Xmobar.Plugins.Date
+import Xmobar.Plugins.MementoMori
 import Xmobar.Plugins.PipeReader
 import Xmobar.Plugins.BufferedPipeReader
 import Xmobar.Plugins.MarqueePipeReader
@@ -54,7 +55,7 @@ infixr :*:
 -- this function's type signature.
 runnableTypes :: Command :*: Monitors :*: Date :*: PipeReader :*:
                  BufferedPipeReader :*: CommandReader :*: StdinReader :*:
-                 XMonadLog :*: EWMH :*: Kbd :*: Locks :*:
+                 XMonadLog :*: EWMH :*: Kbd :*: Locks :*: MementoMori :*:
 #ifdef INOTIFY
                  Mail :*: MBox :*:
 #endif
