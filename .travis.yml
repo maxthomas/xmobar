@@ -1,20 +1,37 @@
-language: haskell
-
+# Choose a build environment
 dist: xenial
 
-ghc:
-  - 8.6
+# Do not choose a language; we provide our own build tools.
+language: generic
+
+# Caching so the next build will be fast too.
+cache:
+  directories:
+  - $HOME/.stack
+
+# Ensure necessary system libraries are present
+addons:
+  apt:
+    packages:
+      - libgmp-dev
+      - libiw-dev
+      - libasound2-dev
+      - libxpm-dev
+      - libmpd-dev
+      - libxrandr-dev
+      - happy
+      - c2hs
 
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y  libiw-dev libasound2-dev libxpm-dev libmpd-dev
-  - sudo apt-get install -y libxrandr-dev
-  - sudo apt-get install -y happy c2hs
+# Download and unpack the stack executable
+- mkdir -p ~/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
 install:
-  - cabal install --only-dependencies --enable-tests -fall_extensions
-  - wget https://raw.github.com/ndmitchell/hlint/master/misc/travis.sh
+# Build dependencies
+- stack --no-terminal --install-ghc test --only-dependencies
 
 script:
-  - sh ./travis.sh src
-  - cabal configure --enable-tests -fall_extensions && cabal build && cabal test
+# Build the package, its tests, and its docs and run the tests
+- stack --no-terminal test --haddock --no-haddock-deps
