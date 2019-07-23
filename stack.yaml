@@ -12,7 +12,10 @@ flags:
    all_extensions: true
 
 extra-deps:
- - iwlib-0.1.0
+- iwlib-0.1.0
+- git: https://github.com/maxthomas/memento-mori
+  commit: 5332c2ade41ba111e9c86b2a8bcafbf3f45e9954
+
 
 # Add to extra-deps for lts-12.24:
 # - parsec-numbers-0.1.0
