@@ -130,6 +130,7 @@ library
                    Xmobar.Plugins.XMonadLog,
                    Xmobar.Plugins.Kbd,
                    Xmobar.Plugins.Locks,
+                   Xmobar.Plugins.MementoMori,
                    Xmobar.Plugins.Monitors,
                    Xmobar.Plugins.Monitors.Batt,
                    Xmobar.Plugins.Monitors.Common,
@@ -176,6 +177,7 @@ library
       parsec-numbers >= 0.1.0,
       stm >= 2.3 && < 2.6,
       extensible-exceptions == 0.1.*,
+      memento-mori >= 0.2.0,
       async
 
     if impl(ghc < 8.0.2)
