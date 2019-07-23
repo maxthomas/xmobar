@@ -3,9 +3,6 @@ language: haskell
 dist: xenial
 
 ghc:
-  - 8.0
-  - 8.2
-  - 8.4
   - 8.6
 
 before_install:
